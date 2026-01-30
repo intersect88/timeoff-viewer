@@ -93,6 +93,79 @@ body {
   padding: 2rem;
 }
 
+/* Balance View Card */
+.balance-view-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.balance-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.balance-view-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.balance-view-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.balance-view-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.balance-view-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.balance-view-value {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #333;
+}
+
 /* Balance Section */
 .balance-section {
   display: grid;
@@ -381,6 +454,35 @@ body {
     padding: 1rem;
   }
 
+  /* Balance View responsive */
+  .balance-view-container {
+    padding: 1.25rem;
+  }
+
+  .balance-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .balance-view-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .btn-edit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .balance-view-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .balance-view-value {
+    font-size: 1.5rem;
+  }
+
   .balance-section,
   .total-section {
     grid-template-columns: 1fr;
@@ -403,7 +505,8 @@ body {
 
   /* Buttons more touch-friendly */
   .btn-primary,
-  .btn-secondary {
+  .btn-secondary,
+  .btn-edit {
     padding: 1rem 1.5rem;
     font-size: 1rem;
     min-height: 48px;

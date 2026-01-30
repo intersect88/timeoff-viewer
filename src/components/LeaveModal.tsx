@@ -65,8 +65,8 @@ const LeaveModal: React.FC<LeaveModalProps> = ({ onClose, onSubmit }) => {
               type="number"
               value={hours}
               onChange={(e) => setHours(Number(e.target.value))}
-              min="0.5"
-              step="0.5"
+              min="1"
+              step="1"
               required
             />
           </div>

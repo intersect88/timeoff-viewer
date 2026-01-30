@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { LeaveBalance, LeaveEntry } from './types';
-import BalanceCard from './components/BalanceCard';
+import BalanceViewCard from './components/BalanceViewCard';
+import BalanceEditorModal from './components/BalanceEditorModal';
 import TotalCard from './components/TotalCard';
 import LeaveModal from './components/LeaveModal';
 import LeaveReport from './components/LeaveReport';
@@ -21,6 +22,7 @@ function App() {
 
   const [entries, setEntries] = useState<LeaveEntry[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBalanceEditorOpen, setIsBalanceEditorOpen] = useState(false);
 
   // Listen to auth state changes (handles redirect automatically)
   useEffect(() => {
@@ -82,11 +84,7 @@ function App() {
   const totalHours = balance.ferie + balance.rol + balance.exFestivita;
   const totalDays = totalHours / 8;
 
-  const handleBalanceChange = (type: keyof LeaveBalance, value: number) => {
-    const newBalance = {
-      ...balance,
-      [type]: value
-    };
+  const handleBalanceSave = (newBalance: LeaveBalance) => {
     setBalance(newBalance);
     saveBalance(newBalance);
   };
@@ -169,23 +167,10 @@ function App() {
         </main>
       ) : (
         <main className="App-main">
-          <div className="balance-section">
-            <BalanceCard 
-              label="Saldo Ferie"
-              value={balance.ferie}
-              onChange={(value) => handleBalanceChange('ferie', value)}
-            />
-            <BalanceCard 
-              label="Saldo ROL"
-              value={balance.rol}
-              onChange={(value) => handleBalanceChange('rol', value)}
-            />
-            <BalanceCard 
-              label="Saldo Ex-Festività"
-              value={balance.exFestivita}
-              onChange={(value) => handleBalanceChange('exFestivita', value)}
-            />
-          </div>
+          <BalanceViewCard 
+            balance={balance}
+            onEdit={() => setIsBalanceEditorOpen(true)}
+          />
 
           <div className="total-section">
             <TotalCard 
@@ -220,6 +205,14 @@ function App() {
         <LeaveModal 
           onClose={() => setIsModalOpen(false)}
           onSubmit={handleAddEntry}
+        />
+      )}
+
+      {isBalanceEditorOpen && (
+        <BalanceEditorModal 
+          balance={balance}
+          onClose={() => setIsBalanceEditorOpen(false)}
+          onSave={handleBalanceSave}
         />
       )}
     </div>
