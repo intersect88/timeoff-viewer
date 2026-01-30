@@ -1,20 +1,34 @@
-# Gestione Ferie e Permessi
+# TimeOff Viewer
 
-Applicazione web per la gestione di ferie, ROL ed ex-festività.
+Applicazione web per la gestione di ferie, ROL ed ex-festività con autenticazione Google e salvataggio cloud.
 
 ## Funzionalità
 
+- **Autenticazione Google**: Accedi con il tuo account Google
 - **Saldi**: Gestione dei saldi di Ferie, ROL ed Ex-Festività (espressi in ore)
-- **Totali**: Visualizzazione del totale in ore e giorni
+- **Totali**: Visualizzazione del totale in ore e giorni (1 giorno = 8 ore)
 - **Registrazione**: Aggiungi permessi e ferie tramite modale
 - **Report**: Visualizza lo storico dei permessi con ordinamento per data
-- **Persistenza**: I dati vengono salvati automaticamente nel browser (localStorage)
+- **Persistenza Cloud**: I dati vengono salvati automaticamente su Firebase Firestore
+- **Multi-dispositivo**: Accedi ai tuoi dati da qualsiasi dispositivo
 
 ## Tecnologie
 
 - React
 - TypeScript
+- Firebase (Authentication + Firestore)
 - CSS3
+
+## Configurazione Firebase
+
+Prima di avviare l'applicazione, configura Firebase:
+
+1. Crea un progetto su https://console.firebase.google.com/
+2. Abilita l'autenticazione Google
+3. Crea un database Firestore
+4. Copia la configurazione nel file `src/firebase.ts`
+
+Consulta la documentazione Firebase per i dettagli.
 
 ## Installazione
 
@@ -36,16 +50,6 @@ L'applicazione sarà disponibile su [http://localhost:3000](http://localhost:300
 npm run build
 ```
 
----
+## Repository
 
-## Available Scripts (Create React App)
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time.
+https://github.com/intersect88/timeoff-viewer
