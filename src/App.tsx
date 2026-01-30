@@ -7,7 +7,7 @@ import LeaveModal from './components/LeaveModal';
 import LeaveReport from './components/LeaveReport';
 import AuthButton from './components/AuthButton';
 import { auth, db } from './firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User, getRedirectResult } from 'firebase/auth';
 import { doc, getDoc, setDoc, collection, query, getDocs, addDoc, deleteDoc } from 'firebase/firestore';
 
 function App() {
@@ -21,6 +21,20 @@ function App() {
 
   const [entries, setEntries] = useState<LeaveEntry[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Handle redirect result from Google sign-in
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          setUser(result.user);
+        }
+      })
+      .catch((error) => {
+        console.error('Errore durante il login:', error);
+        alert('Errore durante il login: ' + error.message);
+      });
+  }, []);
 
   // Listen to auth state changes
   useEffect(() => {

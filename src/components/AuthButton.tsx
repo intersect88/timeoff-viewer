@@ -1,5 +1,5 @@
 import React from 'react';
-import { signInWithPopup, signOut } from 'firebase/auth';
+import { signInWithRedirect, signOut } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
 
 interface AuthButtonProps {
@@ -10,8 +10,7 @@ interface AuthButtonProps {
 const AuthButton: React.FC<AuthButtonProps> = ({ user, onAuthChange }) => {
   const handleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      onAuthChange();
+      await signInWithRedirect(auth, googleProvider);
     } catch (error: any) {
       console.error('Errore durante il login:', error);
       alert('Errore durante il login: ' + error.message);
