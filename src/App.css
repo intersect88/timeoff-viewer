@@ -323,6 +323,11 @@ body {
   padding: 2rem;
 }
 
+.report-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .report-table {
   width: 100%;
   border-collapse: collapse;
@@ -361,6 +366,17 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .App-header {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+
   .App-main {
     padding: 1rem;
   }
@@ -368,19 +384,207 @@ body {
   .balance-section,
   .total-section {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .balance-card,
+  .total-card {
+    padding: 1.25rem;
+  }
+
+  .balance-card input {
+    font-size: 1.25rem;
+    padding: 0.65rem;
+  }
+
+  .total-card .total-value {
+    font-size: 1.75rem;
+  }
+
+  /* Buttons more touch-friendly */
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .btn-delete {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    min-height: 44px;
   }
 
   .modal-content {
     width: 95%;
+    max-width: none;
     padding: 1.5rem;
+    margin: 1rem;
   }
 
+  .modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.85rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .report-section {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .report-section h2 {
+    font-size: 1.25rem;
+  }
+
+  /* Table responsive */
   .report-table {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    min-width: 600px;
   }
 
   .report-table th,
   .report-table td {
     padding: 0.75rem 0.5rem;
+  }
+
+  .report-table th {
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    z-index: 1;
+  }
+
+  /* User info responsive */
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .user-name {
+    font-size: 0.9rem;
+  }
+
+  .welcome-message {
+    padding: 2rem 1rem;
+  }
+
+  .welcome-message h2 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-message p {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .App-main {
+    padding: 1.5rem;
+  }
+
+  .balance-section,
+  .total-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .report-table {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .balance-card,
+  .total-card,
+  .report-section {
+    border-radius: 8px;
+  }
+
+  .modal-content {
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .auth-section {
+    width: 100%;
+  }
+
+  .report-table {
+    font-size: 0.8rem;
+    min-width: 500px;
+  }
+
+  .report-table th,
+  .report-table td {
+    padding: 0.6rem 0.4rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modal-overlay {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
+  .modal-content {
+    margin: auto;
+  }
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Better touch targets */
+  .report-table th.sortable,
+  .btn-delete,
+  .close-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-delete:hover,
+  .report-table th.sortable:hover,
+  .report-table tbody tr:hover {
+    transform: none;
+    background: inherit;
+  }
+
+  /* Add active states instead */
+  .btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  .btn-secondary:active,
+  .btn-delete:active {
+    opacity: 0.8;
   }
 }

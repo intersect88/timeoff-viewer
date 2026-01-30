@@ -51,41 +51,43 @@ const LeaveReport: React.FC<LeaveReportProps> = ({ entries, onDelete }) => {
     <div className="report-section">
       <h2>Report Permessi</h2>
       
-      <table className="report-table">
-        <thead>
-          <tr>
-            <th onClick={toggleSortOrder} className="sortable">
-              Data {sortOrder === 'asc' ? '↑' : '↓'}
-            </th>
-            <th>Tipo</th>
-            <th>Ore</th>
-            <th>Descrizione</th>
-            <th>Azioni</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedEntries.map((entry) => (
-            <tr key={entry.id}>
-              <td>{formatDate(entry.date)}</td>
-              <td>{getTypeLabel(entry.type)}</td>
-              <td>{entry.hours} ore</td>
-              <td>{entry.description || '-'}</td>
-              <td>
-                <button 
-                  className="btn-delete"
-                  onClick={() => {
-                    if (window.confirm('Sei sicuro di voler eliminare questo permesso?')) {
-                      onDelete(entry.id);
-                    }
-                  }}
-                >
-                  Elimina
-                </button>
-              </td>
+      <div className="report-table-container">
+        <table className="report-table">
+          <thead>
+            <tr>
+              <th onClick={toggleSortOrder} className="sortable">
+                Data {sortOrder === 'asc' ? '↑' : '↓'}
+              </th>
+              <th>Tipo</th>
+              <th>Ore</th>
+              <th>Descrizione</th>
+              <th>Azioni</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortedEntries.map((entry) => (
+              <tr key={entry.id}>
+                <td>{formatDate(entry.date)}</td>
+                <td>{getTypeLabel(entry.type)}</td>
+                <td>{entry.hours} ore</td>
+                <td>{entry.description || '-'}</td>
+                <td>
+                  <button 
+                    className="btn-delete"
+                    onClick={() => {
+                      if (window.confirm('Sei sicuro di voler eliminare questo permesso?')) {
+                        onDelete(entry.id);
+                      }
+                    }}
+                  >
+                    Elimina
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
