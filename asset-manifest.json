@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/timeoff-viewer/static/css/main.079c938a.css",
+    "main.js": "/timeoff-viewer/static/js/main.b4942b40.js",
+    "static/js/453.93343b6e.chunk.js": "/timeoff-viewer/static/js/453.93343b6e.chunk.js",
+    "index.html": "/timeoff-viewer/index.html",
+    "main.079c938a.css.map": "/timeoff-viewer/static/css/main.079c938a.css.map",
+    "main.b4942b40.js.map": "/timeoff-viewer/static/js/main.b4942b40.js.map",
+    "453.93343b6e.chunk.js.map": "/timeoff-viewer/static/js/453.93343b6e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.079c938a.css",
+    "static/js/main.b4942b40.js"
+  ]
+}
